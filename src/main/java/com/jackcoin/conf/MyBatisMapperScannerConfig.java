@@ -24,7 +24,7 @@ public class MyBatisMapperScannerConfig {
         Properties properties = new Properties();
         properties.setProperty("mappers", "com.jackcoin.util.MyMapper");
         properties.setProperty("notEmpty", "false");
-        properties.setProperty("IDENTITY", "MYSQL");
+        properties.setProperty("IDENTITY", "SQLServer");
         mapperScannerConfigurer.setProperties(properties);
         return mapperScannerConfigurer;
     }

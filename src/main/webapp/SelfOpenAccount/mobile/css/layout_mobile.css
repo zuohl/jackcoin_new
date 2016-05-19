@@ -1,0 +1,122 @@
+@charset "GBK";
+
+/*=======   CSS Document   =======*/
+body{margin:0; padding:0; background: #FFF; color:#333;}
+
+a{ color:#1767b1; text-decoration:none;}
+a:hover{ color:#f60; text-decoration:underline;}
+
+table tr{
+margin:0;
+padding:0;}
+.xinxi{
+font-family:微软雅黑;
+width:100%;
+margin:0 auto;
+background-image:url(../../../img/register_mobile_bg.jpg);
+padding-bottom:15px;
+}
+.toubu{
+width:100%;
+height:132px;
+padding-top:8px;
+border-top:solid 3px #3399FF;
+background-image:url(../../../img/register_mobile_fgx.png);
+background-repeat:repeat-x;
+color:#0099CC;}
+
+.tu{
+width:76px;
+background-image:url(../../../img/register_mobile_ts.png);
+background-repeat:no-repeat;
+}
+.you{
+padding-left:8px;
+}
+.you span{
+color:#FF0000;}
+.biaoge{
+margin-top:5px;
+}
+.biaoge table{
+width:100%;
+}
+.bt{
+width:100%;
+line-height:35px;
+}
+.bt td{
+padding-left:5px;
+border-bottom:solid 1px #333333;}
+.biaoge table span{
+color:#FF0000;}
+.td1{
+height:30px;
+width:32%;
+text-align:right;
+padding:5px;
+}
+.td2{
+height:30px;
+width:60%;
+padding:5px;
+}
+.td2 input{
+width:100%;
+height:30px;
+line-height:30px;}
+.td3{
+text-align:center;}
+.td3 em{
+color:#FF0000;}
+.qiangdu{
+width:29%;
+height:30px;
+line-height:30px;
+text-align:center;
+display:block;
+float:left;
+margin-right:6px;
+background-color:#777;
+}
+.select1{
+width:100%;
+height:35px;}
+.select1 option{
+height:35px;
+line-height:35px;}
+.dibu{
+width:100%;
+}
+.anniu{
+width:70%;
+margin:0 auto;
+height:40px;}
+.anniu input{
+height:40px;
+line-height:35px;
+width:100%;
+}
+.tiaok{
+height:30px;
+line-height:30px;
+font-size:13px;
+color:#3399CC;
+text-align:center;
+margin-top:10px;}
+
+
+
+/* done.asp 注册成功
+----------------------------------------------- */
+	.bodyStep4{ width:960px; margin:0 auto 7px;}
+	.bodyStep4 .title{ background:url(../../../image/mgr/logon/done_ico.jpg) no-repeat 0 center; width:320px; height:90px; margin:0 auto; padding-left:80px; font:600 28px/90px Arial, "微软雅黑", "宋体"; color:#ff6904;}
+	.bodyStep4 li{ float:left;}
+	.bodyStep4 textarea{ width:300px; height:100px;}
+	.bodyStep4 .content{ width:650px; margin:0 auto;}
+	.bodyStep4 label{ float:left; width:6em; text-align:right; font:100 12px/25px Arial, "微软雅黑", "宋体";}
+	.bodyStep4 .div{ padding:3px 0; background:#fff;}
+	.bodyStep4 .div2{ float:left; width:385px;}
+	.bodyStep4 .help{ color:#238cee; width:250px; float:right; font:100 12px/20px Arial, "微软雅黑", "宋体";}
+	.bodyStep4 span{ line-height:40px;}
+	

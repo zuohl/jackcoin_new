@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<input type="hidden" name="pageIndex" value="${pageView.pageNow }">
+<c:if test="${pageView == null || pageView.rowCount < 1}">
+	<h6 align="center" >没有找到相关记录</h6>
+</c:if>
+<c:if test="${pageView.rowCount > 0}">
+	<div class="pagination pagination-right">
+		<c:set var="aroundCount" value="2"></c:set>
+		<ul>
+			<li class="li_span">
+				<span>
+					<span>页码 <span  class="text-info">${pageView.pageNow }</span>/<span  class="text-info">${pageView.pageCount }</span></span>
+					<span style="margin-left: 15px; margin-right: 15px;">总记录 <span  class="text-info">${pageView.rowCount }</span></span>
+					<span>每页数据 <span class="text-info">${pageView.pageSize }</span></span> 
+				</span>
+			</li>
+			<c:if test="${pageView.pageNow <= 1}">
+				<li class="disabled"><p class="this_span">上一页</p></li>
+			</c:if>
+			<c:if test="${pageView.pageNow > 1}">
+				<li><a href="javascript:;" class="gotoPage" data-page-index="${pageView.pageNow - 1 }">上一页</a></li>
+			</c:if>
+			<li class="${pageView.pageNow == 1 ? 'active' : '' }"><a href="javascript:;" class="gotoPage" data-page-index="1">1</a></li>
+				<c:if test="${(pageView.pageNow -  aroundCount) > 1}">
+					<li><span>...</span></li>
+				</c:if>
+				<c:set var="begin" value="${pageView.pageNow -  aroundCount }"></c:set>
+				<c:if test="${(pageView.pageNow -  aroundCount) < 2 }">
+					<c:set var="begin" value="2"></c:set>
+				</c:if>
+				<c:forEach var="index" begin="${begin  }" end="${pageView.pageNow + aroundCount }">
+					<c:if test="${index > 1 && index < pageView.pageCount }">
+						<li class="${pageView.pageNow == index ? 'active' : '' }"><a class="gotoPage " data-page-index="${index }" href="javascript:;">${index }</a></li>	
+					</c:if>
+				</c:forEach>
+				<c:if test="${(pageView.pageNow +  aroundCount) <  pageView.pageCount}">
+					<li><span>...</span></li>
+				</c:if>
+			<c:if test="${pageView.pageCount > 1}">
+				<li class="${pageView.pageNow == pageView.pageCount ? 'active' : '' }"><a href="javascript:;" class="gotoPage" data-page-index="${pageView.pageCount }">${pageView.pageCount }</a></li>
+			</c:if>
+			<c:if test="${pageView.pageNow >=  pageView.pageCount}">
+				<li class="disabled"><p class="this_span">下一页</p></li>
+			</c:if>
+			<c:if test="${pageView.pageNow <  pageView.pageCount}">
+				<li><a href="javascript:;" class="gotoPage" data-page-index="${pageView.pageNow + 1 }">下一页</a></li>
+			</c:if>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		$(".gotoPage").bind("click", function(){
+			var form = $("#searchForm");
+			$(form).find('input[name="pageIndex"]').val($(this).data('pageIndex'));
+			$(form).submit();
+		});
+	</script>
+</c:if>
