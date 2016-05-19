@@ -5,6 +5,7 @@ import com.jackcoin.mapper.MatchNewsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,5 +20,11 @@ public class MatchNewsService {
     public List<MatchNews> getMatchNews() {
         List<MatchNews> matchNewses = matchNewsMapper.selectAll();
         return matchNewses;
+    }
+
+    public Integer addMatchNews(MatchNews matchNewses) {
+        matchNewses.setCreateDate(new Date());
+        matchNewses.setDeleteFlag(0);
+        return matchNewsMapper.insertSelective(matchNewses);
     }
 }

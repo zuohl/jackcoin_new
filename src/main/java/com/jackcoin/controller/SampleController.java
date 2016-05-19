@@ -15,18 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @EnableAutoConfiguration
 public class SampleController {
 
-    @Autowired
-    private MatchNewsService matchNewsService;
 
     @RequestMapping("/")
     @ResponseBody
     String home() {
         return "Hello World!";
-    }
-
-    @RequestMapping("getMatchNews")
-    @ResponseBody
-    public Object getMatchNews() {
-        return matchNewsService.getMatchNews();
     }
 }
