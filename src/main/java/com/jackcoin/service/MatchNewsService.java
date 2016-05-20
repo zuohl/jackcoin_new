@@ -1,30 +1,34 @@
 package com.jackcoin.service;
 
 import com.jackcoin.bean.MatchNews;
-import com.jackcoin.mapper.MatchNewsMapper;
+import com.jackcoin.dao.MatchNewsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by zuohl on 2016/5/19.
  */
 @Service
+@Transactional
 public class MatchNewsService {
 
     @Autowired
-    private MatchNewsMapper matchNewsMapper;
+    private MatchNewsDao matchNewsDao;
 
     public List<MatchNews> getMatchNews() {
-        List<MatchNews> matchNewses = matchNewsMapper.selectAll();
-        return matchNewses;
+        Iterable<MatchNews> all = matchNewsDao.findAll();
+        return (List<MatchNews>) all;
     }
 
-    public Integer addMatchNews(MatchNews matchNewses) {
+    public MatchNews addMatchNews(MatchNews matchNewses) {
         matchNewses.setCreateDate(new Date());
         matchNewses.setDeleteFlag(0);
-        return matchNewsMapper.insertSelective(matchNewses);
+        MatchNews save = matchNewsDao.save(matchNewses);
+        return save;
     }
 }
