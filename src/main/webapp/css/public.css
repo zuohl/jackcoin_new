@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS 通用库 */
+*{padding:0;margin:0;}
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,img{border:0;font-style:normal;font-weight:normal;margin:0;padding:0;}
+
+body{
+    background-color:#fff;
+    font-family: Microsoft YaHei,"宋体",Arial,Verdana,Sans-serif;/*设置字体，如果浏览器不支持第一个字体，则会尝试下一*/    
+}
+
+table{border-collapse:separate;border-spacing:0;}
+
+button{cursor:pointer;}
+
+input{
+    height:36px;
+    line-height:36px;
+    background:none;
+    border:1px solid #bbb;
+}
+input:focus{ /*获得焦点时的样式*/
+    border:1px dotted #4ec1a0;
+}
+
+.text_input,.textarea,.but{outline:0px;}
+
+.but{ /*按钮*/
+    
+    outline:0px;
+    border:1px solid #ddd;
+    text-align:center;
+    display:block;
+    cursor:pointer;
+    float:left;
+    color:#434343;
+    background-color:#fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;}
+.but:hover{
+    background-color:#4ec1a0; color:#fff; 
+    }
+.but_h1{
+    height:38px;
+    line-height:38px;
+    width:100px;
+    
+}
+.but_h2{
+    height:38px;
+    line-height:38px;
+    width:100px;
+    background-color:#4ec1a0; color:#fff; 
+    margin-right: 10px;
+}
+.but_h3{
+    height:28px;
+    line-height:28px;
+    width:90px;
+    background-color:#4ec1a0; color:#fff; 
+    margin-right: 10px;
+    cursor:pointer;
+}
+
+.but_h4{
+    height:38px;
+    line-height:38px;
+    width:240px;
+    margin-left: 10px;
+}
+
+.clear{ clear:both; height:0px;}/*清除浮动*/
+.center{width:980px; margin:0 auto;}
+
+/*表*/
+.consumer_tab{ width: 100%; font-size: 14px;}
+.consumer_tab tr{width: 100%; height: auto;}
+.consumer_tab .first_tr td{ border-top:1px solid #ddd; border-bottom: 1px solid #ddd; line-height: 36px;text-align: center;} 
+.consumer_tab .main_tr td .vip_color{ font-size: 16px; color:#4ec1a0;}
+
+.consumer_tab .main_tr td{ padding: 10px 0px; border-bottom: 1px solid #ddd;text-align: center;}
+.consumer_tab .main_tr td p{ line-height: 1.6;}
+.consumer_tab .main_tr:hover td{ background-color: #fff;}
+
+.nav_menu{ background-color: #fff;
+    height: 90px;
+    width: 100%;
+    border-bottom:1px solid #D4D4D4;
+}
