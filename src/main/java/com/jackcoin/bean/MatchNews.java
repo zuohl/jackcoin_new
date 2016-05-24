@@ -1,5 +1,7 @@
 package com.jackcoin.bean;
 
+import com.fasterxml.jackson.databind.deser.Deserializers;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,17 +10,13 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "match_news")
-public class MatchNews {
+public class MatchNews extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer newsId;
 
     private String newsTitle;
-
-    private Date createDate;
-
-    private Integer deleteFlag;
 
     public Integer getNewsId() {
         return newsId;
@@ -34,21 +32,5 @@ public class MatchNews {
 
     public void setNewsTitle(String newsTitle) {
         this.newsTitle = newsTitle;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Integer getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
     }
 }
