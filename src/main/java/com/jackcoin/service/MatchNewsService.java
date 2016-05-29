@@ -1,5 +1,6 @@
 package com.jackcoin.service;
 
+import com.jackcoin.bean.Constants;
 import com.jackcoin.bean.MatchNews;
 import com.jackcoin.dao.MatchNewsDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class MatchNewsService {
 
     public MatchNews addMatchNews(MatchNews matchNewses) {
         matchNewses.setCreateDate(new Date());
-        matchNewses.setDeleteFlag(0);
+        matchNewses.setIsDelete(Constants.DELETE_FLAG_NO);
         MatchNews save = matchNewsDao.save(matchNewses);
         return save;
     }

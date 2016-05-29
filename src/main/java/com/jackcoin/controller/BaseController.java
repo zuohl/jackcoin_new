@@ -43,7 +43,7 @@ public class BaseController {
 
     @RequestMapping("/")
     public String indexPage() {
-        return "main.html";
+        return "index.html";
     }
 
 	@ExceptionHandler({Exception.class})

@@ -2,10 +2,13 @@ package com.jackcoin.bean;
 
 import javax.persistence.*;
 import java.util.Date;
-
+/**
+ * Created by zuohl on 2016/5/24.
+ * 交易账号表
+ */
 @Entity
 @Table(name = "match_user")
-public class MatchUser {
+public class MatchUser extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
@@ -76,6 +79,34 @@ public class MatchUser {
     private String idPhotoUrl;
 
     private Date createDate;
+
+    private Date updateDate;
+
+    private Integer isDelete;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -291,13 +322,5 @@ public class MatchUser {
 
     public void setIdPhotoUrl(String idPhotoUrl) {
         this.idPhotoUrl = idPhotoUrl;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
     }
 }

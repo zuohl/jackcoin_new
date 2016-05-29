@@ -13,6 +13,12 @@ public class Constants {
     public static final int RESULT_EXCEPTION = 100;
 
     /**
+     * 删除标识
+     */
+    public static final int DELETE_FLAG_YES = 1;
+
+    public static final int DELETE_FLAG_NO = 0;
+    /**
      * 自定义异常提示
      */
     public static final String ERROR_MSG = "发现一个未知错误:{0}！请稍后重试，如无法解决，请联系客服热线：0000";

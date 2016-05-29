@@ -195,7 +195,7 @@ $(".search").click(function(){
 	                     $.post("http://iss.sjhl.cc/livechat.php?callback=?",{act:'leavemsg',email:email,message:messageval,mobile:telval,name:nameval,serviceid:serviceid,siteid:G_SiteID});
 	                 });
 				};
-				$.post("feedback.asp", "action=add&message=" + messageval+ "&name=" + nameval + "&tel=" + telval + "&email="+ email, function(json) {
+				$.post("http://www.qbypsc.cn/ds/m/js/feedback.asp", "action=add&message=" + messageval+ "&name=" + nameval + "&tel=" + telval + "&email="+ email, function(json) {
 					$("#sendcomment").empty();
 					$("#commentsuccess").css("display","block");
 				})
@@ -208,7 +208,7 @@ $(".search").click(function(){
 		    var page = $("#pageno").val();
 				var BigClassName = $("#BigClassName").val();
 				var searchkeywords = $("#searchkeywords").val();
-        $.get("inc/showmore.asp","action=news&page=" + page + "&BigClassName=" + BigClassName + "&searchkeywords=" + searchkeywords,function(data){
+        $.get("http://www.qbypsc.cn/ds/m/js/inc/showmore.asp","action=news&page=" + page + "&BigClassName=" + BigClassName + "&searchkeywords=" + searchkeywords,function(data){
 					  if (data=="") {
 						  $("#getmore").attr("style", "display:none");
 					  }
@@ -225,7 +225,7 @@ $(".search").click(function(){
 		    var page = $("#pageno").val();
 				var BigClassName = $("#BigClassName").val();
 				var searchkeywords = $("#searchkeywords").val();
-        $.get("inc/showmore.asp","action=product&page=" + page + "&BigClassName=" + BigClassName + "&searchkeywords=" + searchkeywords,function(data){
+        $.get("http://www.qbypsc.cn/ds/m/js/inc/showmore.asp","action=product&page=" + page + "&BigClassName=" + BigClassName + "&searchkeywords=" + searchkeywords,function(data){
 					  if (data=="") {
 						  $("#getmoreproduct").attr("style", "display:none");
 					  } 
