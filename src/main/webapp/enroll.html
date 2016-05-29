@@ -7,18 +7,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="MobileOptimized" content="240">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="apple-touch-icon" href="img/appico.png"/>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/huaping.js"></script>
     <script type="text/javascript" src="js/sj_function.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/common.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/hint_style.css">
+
 </head>
 
 <body>
 
-<link rel="stylesheet" href="css/amazeui.css">
-<link rel="stylesheet" href="css/thissite.css">
+<link rel="stylesheet" href="assets/css/amazeui.css">
+<link rel="stylesheet" href="assets/css/thissite.css">
 <!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器。 请 <a
         href="#" target="_blank">升级浏览器</a>
@@ -57,12 +60,12 @@
 
                     <ul class="am-menu-sub am-collapse  am-avg-sm-2 ">
 
-                        <li><a href="../about/?6.html" title="奖项设置">奖项设置</a></li>
-                        <li><a href="../about/?7.html" title="比赛规则">比赛规则</a></li>
-                        <li><a href="../about/?8.html" title="软件下载">软件下载</a></li>
-                        <li><a href="../about/?9.html" title="邀请有礼">邀请有礼</a></li>
-                        <li><a href="../about/?10.html" title="比赛报名">比赛报名</a></li>
-                        <li><a href="../about/?11.html" title="报名须知">报名须知</a></li>
+                        <li><a href="about/6.html" title="奖项设置">奖项设置</a></li>
+                        <li><a href="about/7.html" title="比赛规则">比赛规则</a></li>
+                        <li><a href="about/8.html" title="软件下载">软件下载</a></li>
+                        <li><a href="about/9.html" title="邀请有礼">邀请有礼</a></li>
+                        <li><a href="about/10.html" title="比赛报名">比赛报名</a></li>
+                        <li><a href="about/11.html" title="报名须知">报名须知</a></li>
 
 
                     </ul>
@@ -72,10 +75,10 @@
                     <a href="news.asp?id=1">新闻中心</a>
                     <ul class="am-menu-sub am-collapse  am-avg-sm-2 ">
 
-                        <li><a href="../news/?2.html" title="赛事公告">赛事公告</a></li>
-                        <li><a href="../news/?3.html" title="行情点评">行情点评</a></li>
-                        <li><a href="../news/?4.html" title="交易中心介绍">交易中心介绍</a></li>
-                        <li><a href="../news/?12.html" title="高手心得">高手心得</a></li>
+                        <li><a href="news/2.html" title="赛事公告">赛事公告</a></li>
+                        <li><a href="news/3.html" title="行情点评">行情点评</a></li>
+                        <li><a href="news/4.html" title="交易中心介绍">交易中心介绍</a></li>
+                        <li><a href="news/12.html" title="高手心得">高手心得</a></li>
 
 
                     </ul>
@@ -83,7 +86,7 @@
 
 
                 <li class="">
-                    <a href="../kh/">比赛报名</a>
+                    <a href="enroll.html">比赛报名</a>
                 </li>
 
             </ul>
@@ -101,7 +104,6 @@
                 <script type="text/javascript" src="js/formbm.js"></script>
 
                 <form method="post" action="" name="commform" id="commform">
-
                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                         <tbody>
 
@@ -169,7 +171,7 @@
                             </td>
                             <td>
                                 <input name="" type="checkbox" value="" checked>
-                                <span class="error error5">已阅读<a href="registrations.html"
+                                <span class="error error5">已阅读<a href="about/10.html"
                                                                  target="_blank">报名须知</a></span>
                             </td>
                         </tr>
@@ -196,62 +198,8 @@
                         <link rel="stylesheet" href="jdwleditor/themes/default/defaults.css"/>
                         <script src="jdwleditor/kindeditor-all.js"></script>
                         <script src="jdwleditor/lang/zh_CN.js"></script>
-                        <script>
-                            KindEditor.ready(function (K) {
-                                var editor = K.editor({
-                                    uploadJson: '../../jdwleditor/asp/upload_json.asp',
-
-                                    allowFileManager: true
-                                });
 
 
-                                K('#image3').click(function () {
-                                    editor.loadPlugin('image', function () {
-                                        editor.plugin.imageDialog({
-                                            showRemote: false,
-                                            imageUrl: K('#pic').val(),
-                                            clickFn: function (url, title, width, height, border, align) {
-                                                K('#pic').val(url);
-                                                editor.hideDialog();
-                                            }
-                                        });
-                                    });
-                                });
-                            });
-
-                        </script>
-
-                        <!--
-
-                        <tr bgcolor="#FFFFFF">
-                                            <td colspan="2" style="color:#FF0000 ">忘记账号，忘记密码，变更银行卡 请填下面
-
-                                            </td>
-                                          </tr>
-
-
-
-                          <tr bgcolor="#FFFFFF">
-                                            <td  height="40" valign="middle" style=" font-size:12px " >
-                                            身份证反面照片：</td>
-                                            <td style=" font-size:12px " >
-
-                        <input type="text" name="fpic" size="10" maxlength="200" id="fpic" /> <input type="button" id="image4" value="选择图片" />
-
-                               </td>
-                                        </tr>
-
-
-                          <tr bgcolor="#FFFFFF">
-                                            <td  height="40" valign="middle" style=" font-size:12px " >
-                                            手持身份证上半身照片：</td>
-                                            <td style=" font-size:12px " >
-
-                        <input type="text" name="yhkpic" size="10" maxlength="200" id="yhkpic" /> <input type="button" id="image5" value="选择图片" />
-
-                               </td>
-                                </tr>
-                                -->
 
                         <tr bgcolor="#FFFFFF">
                             <td colspan="2" align="center">
@@ -287,5 +235,5 @@
     </div>
 </article>
 
-<script src="js/amazeui.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
  

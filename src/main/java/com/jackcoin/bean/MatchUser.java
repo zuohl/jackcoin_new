@@ -78,6 +78,36 @@ public class MatchUser extends BaseEntity {
 
     private String idPhotoUrl;
 
+    private Date createDate;
+
+    private Date updateDate;
+
+    private Integer isDelete;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     public Integer getUserId() {
         return userId;
     }

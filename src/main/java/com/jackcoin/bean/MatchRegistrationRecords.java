@@ -1,6 +1,7 @@
 package com.jackcoin.bean;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by zuohl on 2016/5/24.
@@ -24,6 +25,12 @@ public class MatchRegistrationRecords extends BaseEntity {
 
     //推荐人账号,关联matchUser里的userId
     private String referralAccount;
+
+    private Date createDate;
+
+    private Date updateDate;
+
+    private Integer isDelete;
 
     public Integer getRegistrationRecordsId() {
         return registrationRecordsId;
@@ -71,5 +78,29 @@ public class MatchRegistrationRecords extends BaseEntity {
 
     public void setReferralAccount(String referralAccount) {
         this.referralAccount = referralAccount;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

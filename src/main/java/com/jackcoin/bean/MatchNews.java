@@ -18,6 +18,12 @@ public class MatchNews extends BaseEntity {
 
     private String newsTitle;
 
+    private Date createDate;
+
+    private Date updateDate;
+
+    private Integer isDelete;
+
     public Integer getNewsId() {
         return newsId;
     }
@@ -32,5 +38,29 @@ public class MatchNews extends BaseEntity {
 
     public void setNewsTitle(String newsTitle) {
         this.newsTitle = newsTitle;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }
