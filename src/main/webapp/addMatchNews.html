@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新建公告</title>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap3-validation.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(function() {
+            $("#addNews").on('click', function () {
+/*                $.get("news/addMatchNews", {
+                    token:getValue("token"),
+                    newsTitle: $("#newsTitle"),
+                    newsContent: $("#newsContent")
+                }, function (data) {
+                    if (data.code == RESULT_SUCCESS) {
+                        //setValue("token",data.data);
+                        alert("添加成功");
+                    } else {
+                        alert("添加失败");
+                    }
+                });*/
+                var newsContent = CKEDITOR.instances['newsContent'].getData();
+                $.ajax({
+                    type : "get",
+                    url  : "/news/addMatchNews?newsTitle="+$("#newsTitle").val()+"&newsContent="+newsContent,
+                    cache : false,
+                    async: true,
+                    dataType:"json",
+                    data : {
+                        userName:$("#userName").val(),
+                        password:$("#password").val()
+                    },
+                    success : function(data) {
+                        if (data.code == RESULT_SUCCESS) {
+                           // setValue("token",data.data);
+                            alert("添加成功");
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <form role="form" id="newsForm">
+        <div class="form-group">
+            <label for="newsTitle">公告标题</label>
+            <input type="text" class="form-control" id="newsTitle"
+                   placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label for="newsContent">公告内容</label>
+            <textarea rows="30" class="form-control" id="newsContent" cols="50" name="editor01">请编辑正文</textarea>
+            <script type="text/javascript">CKEDITOR.replace('editor01');</script>
+        </div>
+        <button type="button" class="btn btn-default" id="addNews">提交</button>
+    </form>
+</div>
+</body>
+</html>
