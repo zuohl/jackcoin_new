@@ -13,6 +13,13 @@ public class Constants {
     public static final int RESULT_EXCEPTION = 100;
 
     /**
+     * 管理账号,密码
+     */
+    public static final String MANAGER_USER_NAME = "jackcoin";
+
+    public static final String MANAGER_PASSWORD = "jackcoin";
+
+    /**
      * 删除标识
      */
     public static final int DELETE_FLAG_YES = 1;

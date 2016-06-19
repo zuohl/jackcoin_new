@@ -18,6 +18,11 @@ public class MatchNews extends BaseEntity {
 
     private String newsTitle;
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name="news_content", columnDefinition="varchar(MAX)", nullable=true)
+    private String newsContent;
+
     private Date createDate;
 
     private Date updateDate;
@@ -62,5 +67,13 @@ public class MatchNews extends BaseEntity {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getNewsContent() {
+        return newsContent;
+    }
+
+    public void setNewsContent(String newsContent) {
+        this.newsContent = newsContent;
     }
 }
