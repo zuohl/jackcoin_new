@@ -24,9 +24,9 @@ public class MatchNewsService {
     @Autowired
     private MatchNewsDao matchNewsDao;
 
-    public Page<MatchNews> getMatchNews(int page,int size) {
+    public Iterable<MatchNews> getMatchNews(int page,int size) {
         Pageable pageable = new PageRequest(page,size);
-        Page<MatchNews> all = matchNewsDao.findAll(pageable);
+        Iterable<MatchNews> all = matchNewsDao.findAll();
         return all;
     }
 

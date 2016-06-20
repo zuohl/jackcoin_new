@@ -28,8 +28,7 @@ public class MatchNewsController extends BaseController {
     @ResponseBody
     public WebResult getMatchNewsList(Integer page,Integer size) {
         WebResult webResult = new WebResult();
-        Page<MatchNews> matchNews = matchNewsService.getMatchNews(page, size);
-        webResult.setData(matchNews);
+        webResult.setData(matchNewsService.getMatchNews(page, size));
         return webResult;
     }
 
