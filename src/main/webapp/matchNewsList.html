@@ -16,9 +16,10 @@
 </head>
 <body>
 <div class="container">
+    <div class="page-header">
+        <h1>公告列表</h1>
+    </div>
     <div id="newsList">
-
-
         <div class="list-group">
             <a href="#" class="list-group-item" v-for="item in items">
                 <h4 class="list-group-item-heading">{{item.newsTitle}}</h4>
@@ -28,8 +29,11 @@
                 {{item.newsTitle}}
             </li>-->
         </ul>
-        <vue-nav :cur.sync="cur" :all.sync="all" v-on:btn-click="onclickListen"></vue-nav>
-        <p>{{msg}}</p>
+            <div class="page-footer">
+                <vue-nav :cur.sync="cur" :all.sync="all" v-on:btn-click="onclickListen"></vue-nav>
+                <p>{{msg}}</p>
+            </div>
+
     </div>
 </div>
 <script type="text/javascript">

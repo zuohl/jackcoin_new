@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台管理登录</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap3-validation.js"></script>
+    <script src="js/common.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function() {
+            //1. 简单写法：
+            $("#form1").validation({icon:true});
+
+            // 要从后台数据确定填的邮箱是不是已注册过了，采用回调方法
+            // $("form").validation(function(obj,params){
+            //   if (obj.id=='mail'){
+            //     $.post("/verifymail",{mail :$(obj).val()},function(data){
+            //       params.err = !data.success;
+            //       params.msg = data.msg;
+            //     });
+            //   }}
+            //   ,{reqmark:true} //这个参数是设必填不要显示有星号，默认是有星号的
+            // );
+
+
+            //.注册
+            $("#submit1").on('click',function(event){
+                // 2.最后要调用 valid()方法。
+                //  valide(object,msg),提示信息显示，object位置后面增加提示信息。如不填object 则自动找最后一个button submit.
+                //  valide(msg)
+
+                //第一种提示写法
+
+                if ($("#form1").valid(this, '请修改后提交') != false) {
+                    $.ajax({
+                        type : "post",
+                        url  : "/manager/login",
+                        cache : false,
+                        async: true,
+                        dataType:"json",
+                        data : {
+                            userName:$("#userName").val(),
+                            password:$("#password").val()
+                        },
+                        success : function(data) {
+                            if (data.code == RESULT_SUCCESS) {
+                                setValue("token",data.data);
+                                alert("登录成功");
+                            } else {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+/*                    $.post("/manager/login", {
+                        "userName": $("#userName").val(),
+                        "password": $("#password").val()
+                    }, function (data) {
+                        if (data.code == RESULT_SUCCESS) {
+                            setValue("token",data.data);
+                            alert("登录成功");
+                        } else {
+                            alert("登录失败");
+                        }
+                    });*/
+                }
+                //第二种提示写法，回调方法你自己提示就随意你了。
+                //if ($("#form1").valid(this,function(err){alert(err)})==false){
+                //  return false;
+                //}
+
+            })
+        });
+    </script>
+</head>
+
+<body>
+<!-- 水平排列的表单 -->
+<div class="container">
+    <div class="page-header">
+        <h1>用户登录 <small>login</small></h1>
+    </div>
+
+    <form class="form-horizontal"  id="form1" action="#" role="form">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="name" check-type="required" required-message="请填写你的大名。">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="pw1" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="pw1" check-type="required" minlength="6">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="submit1" class="btn btn-primary col-sm-4">注册</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>
