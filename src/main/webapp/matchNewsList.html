@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>公告列表</title>
     <script src="js/vue.min.js"></script>
     <script src="js/vue-nav.js"></script>
@@ -19,7 +21,8 @@
 
         <div class="list-group">
             <a href="#" class="list-group-item" v-for="item in items">
-                Dapibus ac facilisis in
+                <h4 class="list-group-item-heading">{{item.newsTitle}}</h4>
+                <p class="list-group-item-text">{{item.createDate}}</p>
             </a>
 <!--            <li class="list-group-item" v-for="item in items" >
                 {{item.newsTitle}}
@@ -43,7 +46,7 @@
         },
         methods:{
             onclickListen:function(data){
-                this.msg = '你点击了'+data+ '页'
+                getNewsList(newsList.cur);
             }
         }
     })
