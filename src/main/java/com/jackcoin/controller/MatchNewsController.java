@@ -5,7 +5,10 @@ import com.jackcoin.bean.MatchNews;
 import com.jackcoin.bean.WebResult;
 import com.jackcoin.service.MatchNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,15 +24,24 @@ public class MatchNewsController extends BaseController {
     @Autowired
     private MatchNewsService matchNewsService;
 
-    @RequestMapping("/getMatchNews")
+    @RequestMapping("/getMatchNewsList")
     @ResponseBody
-    public WebResult getMatchNews() {
+    public WebResult getMatchNewsList(Integer page,Integer size) {
         WebResult webResult = new WebResult();
-        webResult.setData(matchNewsService.getMatchNews());
+        Page<MatchNews> matchNews = matchNewsService.getMatchNews(page, size);
+        webResult.setData(matchNews);
         return webResult;
     }
 
-    @RequestMapping("/addMatchNews")
+    @GetMapping("/getMatchNewsById")
+    public WebResult getMatchNewsById(Integer newsId) {
+        WebResult webResult = new WebResult();
+        webResult.setCode(Constants.RESULT_SUCCESS);
+        webResult.setData(matchNewsService.getMatchNewsById(newsId));
+        return webResult;
+    }
+
+    @PostMapping("/addMatchNews")
     @ResponseBody
     public WebResult addMatchNews(MatchNews matchNews) {
         MatchNews news = matchNewsService.addMatchNews(matchNews);

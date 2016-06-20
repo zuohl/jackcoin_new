@@ -4,6 +4,9 @@ import com.jackcoin.bean.Constants;
 import com.jackcoin.bean.MatchNews;
 import com.jackcoin.dao.MatchNewsDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +24,10 @@ public class MatchNewsService {
     @Autowired
     private MatchNewsDao matchNewsDao;
 
-    public List<MatchNews> getMatchNews() {
-        Iterable<MatchNews> all = matchNewsDao.findAll();
-        return (List<MatchNews>) all;
+    public Page<MatchNews> getMatchNews(int page,int size) {
+        Pageable pageable = new PageRequest(page,size);
+        Page<MatchNews> all = matchNewsDao.findAll(pageable);
+        return all;
     }
 
     public MatchNews addMatchNews(MatchNews matchNewses) {
@@ -31,5 +35,9 @@ public class MatchNewsService {
         matchNewses.setIsDelete(Constants.DELETE_FLAG_NO);
         MatchNews save = matchNewsDao.save(matchNewses);
         return save;
+    }
+
+    public MatchNews getMatchNewsById(Integer newsId) {
+        return matchNewsDao.findOne(newsId);
     }
 }

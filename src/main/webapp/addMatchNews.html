@@ -28,14 +28,14 @@
                 });*/
                 var newsContent = CKEDITOR.instances['newsContent'].getData();
                 $.ajax({
-                    type : "get",
-                    url  : "/news/addMatchNews?newsTitle="+$("#newsTitle").val()+"&newsContent="+newsContent,
+                    type : "post",
+                    url  : "/news/addMatchNews",
                     cache : false,
                     async: true,
                     dataType:"json",
                     data : {
-                        userName:$("#userName").val(),
-                        password:$("#password").val()
+                        newsTitle:$("#newsTitle").val(),
+                        newsContent:newsContent
                     },
                     success : function(data) {
                         if (data.code == RESULT_SUCCESS) {
