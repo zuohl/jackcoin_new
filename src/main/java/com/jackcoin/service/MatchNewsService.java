@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by zuohl on 2016/5/19.
  */
+
 @Service
 @Transactional
 public class MatchNewsService {
@@ -26,8 +25,9 @@ public class MatchNewsService {
 
     public Iterable<MatchNews> getMatchNews(int page,int size) {
         Pageable pageable = new PageRequest(page,size);
+        Page<MatchNews> all1 = matchNewsDao.findAll(pageable);
         Iterable<MatchNews> all = matchNewsDao.findAll();
-        return all;
+        return all1;
     }
 
     public MatchNews addMatchNews(MatchNews matchNewses) {

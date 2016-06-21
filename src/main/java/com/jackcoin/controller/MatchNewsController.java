@@ -7,8 +7,6 @@ import com.jackcoin.service.MatchNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +30,7 @@ public class MatchNewsController extends BaseController {
         return webResult;
     }
 
-    @GetMapping("/getMatchNewsById")
+    @RequestMapping("/getMatchNewsById")
     public WebResult getMatchNewsById(Integer newsId) {
         WebResult webResult = new WebResult();
         webResult.setCode(Constants.RESULT_SUCCESS);
@@ -40,7 +38,7 @@ public class MatchNewsController extends BaseController {
         return webResult;
     }
 
-    @PostMapping("/addMatchNews")
+    @RequestMapping("/addMatchNews")
     @ResponseBody
     public WebResult addMatchNews(MatchNews matchNews) {
         MatchNews news = matchNewsService.addMatchNews(matchNews);

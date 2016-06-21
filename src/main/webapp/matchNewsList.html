@@ -40,8 +40,8 @@
     var newsList = new Vue({
         el: '#newsList',
         data:{
-            cur: 1,
-            all: 4,
+            cur: 0,
+            all: 1,
             msg: '',
             items:""
         },
@@ -50,11 +50,11 @@
         },
         methods:{
             onclickListen:function(data){
-                getNewsList(newsList.cur);
+                getNewsList(newsList.cur -1);
             }
         }
     })
-    getNewsList(1);
+    getNewsList(0);
     function getNewsList(index) {
         $.ajax({
             type : "get",
@@ -64,13 +64,14 @@
             dataType:"json",
             data : {
                 page:index,
-                size:10
+                size:2
             },
             success : function(data) {
                 if (data.code == RESULT_SUCCESS) {
-                    newsList.items = data.data;
-                    //newsList.cur=index;
-                    //newsList.total = resultData.getTotalPages()
+                    var returnData = data.data;
+                    newsList.items = returnData.content;
+                    newsList.cur=returnData.number+1;
+                    newsList.all = returnData.totalPages;
                     //alert("添加成功");
                 } else {
                     alert(data.msg);

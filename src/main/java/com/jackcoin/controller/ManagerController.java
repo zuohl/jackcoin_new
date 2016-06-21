@@ -7,6 +7,8 @@ import com.jackcoin.util.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by zuohl on 2016/6/19.
  */
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/manager")
 public class ManagerController extends BaseController {
 
-    @PostMapping("/login")
+    @RequestMapping("/login")
     @ResponseBody
     public WebResult login(@RequestParam(required = true) String userName,
                            @RequestParam(required = true) String password) {
