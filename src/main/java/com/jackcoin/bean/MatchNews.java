@@ -1,6 +1,7 @@
 package com.jackcoin.bean;
 
-import com.fasterxml.jackson.databind.deser.Deserializers;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.jackcoin.util.CustomDateSerializer;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class MatchNews extends BaseEntity {
     @Column(name="news_content", columnDefinition="varchar(MAX)", nullable=true)
     private String newsContent;
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date createDate;
 
     private Date updateDate;

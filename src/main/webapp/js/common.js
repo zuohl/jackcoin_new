@@ -27,3 +27,29 @@ var getValue = function (key) {
     return isNotEmpty(value)?value:"";
 }
 
+function getUrlParam(string) {
+    var obj =  new Array();
+    if (string.indexOf("?") != -1) {
+        var string = string.substr(string.indexOf("?") + 1);
+        var strs = string.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            var tempArr = strs[i].split("=");
+            obj[i] = tempArr[1];
+        }
+    }
+    return obj;
+}
+function getParameter(param)
+{
+    var query = window.location.search;
+    var iLen = param.length;
+    var iStart = query.indexOf(param);
+    if (iStart == -1)
+        return "";
+    iStart += iLen + 1;
+    var iEnd = query.indexOf("&", iStart);
+    if (iEnd == -1)
+        return query.substring(iStart);
+    return query.substring(iStart, iEnd);
+}
+

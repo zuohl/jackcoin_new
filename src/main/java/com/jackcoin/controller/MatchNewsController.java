@@ -9,13 +9,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
  * Created by zuohl on 2016/5/19.
  */
-@Controller
+@RestController
 @RequestMapping("/news")
 public class MatchNewsController extends BaseController {
 
@@ -23,7 +24,6 @@ public class MatchNewsController extends BaseController {
     private MatchNewsService matchNewsService;
 
     @RequestMapping("/getMatchNewsList")
-    @ResponseBody
     public WebResult getMatchNewsList(Integer page,Integer size) {
         WebResult webResult = new WebResult();
         webResult.setData(matchNewsService.getMatchNews(page, size));
