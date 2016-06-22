@@ -20,6 +20,13 @@ public class Constants {
     public static final String MANAGER_PASSWORD = "jackcoin";
 
     /**
+     * 新闻类型,1为赛事公告,2行情点评
+     */
+    public static final int NEWS_TYPE_NOTICE = 1;
+
+    public static final int NEWS_TYPE_COMMENT = 2;
+
+    /**
      * 删除标识
      */
     public static final int DELETE_FLAG_YES = 1;

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -24,11 +25,11 @@ public class MatchNewsService {
     @Autowired
     private MatchNewsDao matchNewsDao;
 
-    public Iterable<MatchNews> getMatchNews(int page,int size) {
-        Pageable pageable = new PageRequest(page,size);
-        Page<MatchNews> all1 = matchNewsDao.findAll(pageable);
-        Iterable<MatchNews> all = matchNewsDao.findAll();
-        return all1;
+    public Iterable<MatchNews> getMatchNews(Integer matchNews, int page, int size) {
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(page,size,sort);
+        Page<MatchNews> matchNewses = matchNewsDao.findByNewsType(matchNews,pageable);
+        return matchNewses;
     }
 
     public MatchNews addMatchNews(MatchNews matchNewses) {
@@ -36,6 +37,11 @@ public class MatchNewsService {
         matchNewses.setIsDelete(Constants.DELETE_FLAG_NO);
         MatchNews save = matchNewsDao.save(matchNewses);
         return save;
+    }
+
+    public void updateMatchNews(MatchNews matchNews) {
+        matchNews.setUpdateDate(new Date());
+        matchNewsDao.updateByMatchNews(matchNews);
     }
 
     public MatchNews getMatchNewsById(Integer newsId) {

@@ -142,7 +142,7 @@
             matchNews: "",
         }
     })
-    var newsId = decodeURI(getParameter("newsId"));
+    var newsId = getParameter("newsId");
     if (!isNotEmpty(newsId)) {
         newsId = 1;
     }

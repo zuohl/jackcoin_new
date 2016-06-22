@@ -24,6 +24,15 @@ public class MatchNews extends BaseEntity {
     @Column(name="news_content", columnDefinition="varchar(MAX)", nullable=true)
     private String newsContent;
 
+    /**
+     * 1赛事公告,2行情点评
+     */
+    private Integer newsType;
+
+    private String createBy;
+
+    private String updateBy;
+
     @JsonSerialize(using = CustomDateSerializer.class)
     private Date createDate;
 
@@ -77,5 +86,29 @@ public class MatchNews extends BaseEntity {
 
     public void setNewsContent(String newsContent) {
         this.newsContent = newsContent;
+    }
+
+    public Integer getNewsType() {
+        return newsType;
+    }
+
+    public void setNewsType(Integer newsType) {
+        this.newsType = newsType;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 }

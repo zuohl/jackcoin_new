@@ -35,7 +35,8 @@
                     dataType:"json",
                     data : {
                         newsTitle:$("#newsTitle").val(),
-                        newsContent:newsContent
+                        newsContent:newsContent,
+                        newsType:$("#newsType").val()
                     },
                     success : function(data) {
                         if (data.code == RESULT_SUCCESS) {
@@ -52,7 +53,14 @@
 </head>
 <body>
 <div class="container">
-    <form role="form" id="newsForm">
+    <form role="form" id="newsForm" style="margin-top: 20px">
+        <div class="form-group">
+            <label for="newsType">新闻类型</label>
+            <select id="newsType">
+                <option value="1">赛事公告</option>
+                <option value="2">行情点评</option>
+            </select>
+        </div>
         <div class="form-group">
             <label for="newsTitle">公告标题</label>
             <input type="text" class="form-control" id="newsTitle"
