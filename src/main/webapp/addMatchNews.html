@@ -13,20 +13,36 @@
     <script src="js/common.js"></script>
     <script>
         $(function() {
-            $("#addNews").on('click', function () {
-/*                $.get("news/addMatchNews", {
-                    token:getValue("token"),
-                    newsTitle: $("#newsTitle"),
-                    newsContent: $("#newsContent")
-                }, function (data) {
-                    if (data.code == RESULT_SUCCESS) {
-                        //setValue("token",data.data);
-                        alert("添加成功");
-                    } else {
-                        alert("添加失败");
+            var _newsTitle = $("#newsTitle");
+            var _newsType = $("#newsType");
+            var _newsId = $("#newsId");
+            var newsId = getParameter("newsId");
+            var _newsContent = CKEDITOR.instances['newsContent'];
+            if(isNotEmpty(newsId)) {
+                $.ajax({
+                    type: "get",
+                    url: "/news/getMatchNewsById",
+                    cache: false,
+                    async: true,
+                    dataType: "json",
+                    data: {
+                        newsId:newsId
+                    },
+                    success: function (data) {
+                        if (data.code == RESULT_SUCCESS) {
+                            var matchNews = data.data;
+                            _newsTitle.val(matchNews.newsTitle);
+                            _newsContent.setData(matchNews.newsContent);
+                            _newsType.val(matchNews.newsType);
+                            _newsId.val(newsId);
+                        } else {
+                            alert(data.msg);
+                        }
                     }
-                });*/
-                var newsContent = CKEDITOR.instances['newsContent'].getData();
+                });
+            }
+            $("#addNews").on('click', function () {
+                var newsContent = _newsContent.getData();
                 $.ajax({
                     type : "post",
                     url  : "/news/addMatchNews",
@@ -34,14 +50,27 @@
                     async: true,
                     dataType:"json",
                     data : {
-                        newsTitle:$("#newsTitle").val(),
+                        newsTitle:_newsTitle.val(),
                         newsContent:newsContent,
-                        newsType:$("#newsType").val()
+                        newsType:_newsType.val(),
+                        newsId:_newsId.val(),
+                        token:getValue("token")
                     },
                     success : function(data) {
                         if (data.code == RESULT_SUCCESS) {
-                           // setValue("token",data.data);
-                            alert("添加成功");
+                            var code = data.code;
+                            if (code == RESULT_SUCCESS) {
+                                if (isNotEmpty(newsId)) {
+                                    alert("修改成功");
+                                } else {
+                                    alert("添加成功");
+                                }
+                            } else if (code == RESULT_BUSINESS_ERROR){
+                                alert(data.msg);
+                            } else if (code == RESULT_LOGIN_EXCEPTION){
+                                returnToLogin();
+                            }
+
                         } else {
                             alert(data.msg);
                         }
@@ -54,6 +83,7 @@
 <body>
 <div class="container">
     <form role="form" id="newsForm" style="margin-top: 20px">
+        <input type="hidden" id="newsId" name="newsId">
         <div class="form-group">
             <label for="newsType">新闻类型</label>
             <select id="newsType">

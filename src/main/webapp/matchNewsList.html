@@ -15,20 +15,30 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="page-header">
         <h1>公告列表</h1>
     </div>
     <div id="newsList">
-        <div class="list-group">
+<!--        <select id="newsType" v-model="newsType" class="form-control">
+            <option value="1" selected>赛事公告</option>
+            <option value="2">行情点评</option>
+        </select>-->
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in items">
+                <h4 class="list-group-item-heading">{{item.newsTitle}} <a class="btn btn-primary btn-sm" href="addMatchNews.html?newsId={{item.newsId}}">编辑</a></h4>
+                <p class="list-group-item-text">{{item.createDate}} <button @click="deleteNews(item.newsId)" class="btn btn-danger btn-sm">删除</button></p>
+            </li>
+        </ul>
+<!--        <div class="list-group">
             <a href="#" class="list-group-item" v-for="item in items">
-                <h4 class="list-group-item-heading">{{item.newsTitle}}</h4>
+                <h4 class="list-group-item-heading">{{item.newsTitle}} </h4>
                 <p class="list-group-item-text">{{item.createDate}}</p>
             </a>
-            <!--            <li class="list-group-item" v-for="item in items" >
+            &lt;!&ndash;            <li class="list-group-item" v-for="item in items" >
                             {{item.newsTitle}}
-                        </li>-->
-        </div>
+                        </li>&ndash;&gt;
+        </div>-->
         <div class="page-footer">
             <vue-nav :cur.sync="cur" :all.sync="all" v-on:btn-click="onclickListen"></vue-nav>
             <p>{{msg}}</p>
@@ -36,6 +46,10 @@
     </div>
 </div>
     <script type="text/javascript">
+        var newsType = getParameter("newsType");
+        if (!isNotEmpty(newsType)) {
+            newsType = 1;
+        }
         var newsList = new Vue({
             el: '#newsList',
             data: {
@@ -50,10 +64,43 @@
             methods: {
                 onclickListen: function (data) {
                     getNewsList(newsList.cur - 1);
+                },
+                deleteNews: function (newsId) {
+                    deleteNewsById(newsId);
+                }
+
+            },
+            watch: {
+                newsType:function () {
+                    getNewsList(0);
                 }
             }
         })
         getNewsList(0);
+        function deleteNewsById(newsId) {
+            $.ajax({
+                type: "post",
+                url: "/news/deleteMatchNews",
+                cache: false,
+                async: true,
+                dataType: "json",
+                data: {
+                    newsId:newsId,
+                    token: getValue("token")
+                },
+                success: function (data) {
+                    var code = data.code;
+                    if (code == RESULT_SUCCESS) {
+                        alert("删除成功")
+                        location.reload();
+                    } else if (code == RESULT_BUSINESS_ERROR){
+                        alert(data.msg);
+                    } else if (code == RESULT_LOGIN_EXCEPTION){
+                        returnToLogin();
+                    }
+                }
+            });
+        }
         function getNewsList(index) {
             $.ajax({
                 type: "get",
@@ -63,7 +110,8 @@
                 dataType: "json",
                 data: {
                     page: index,
-                    size: 2
+                    size: 2,
+                    newsType: newsType
                 },
                 success: function (data) {
                     if (data.code == RESULT_SUCCESS) {

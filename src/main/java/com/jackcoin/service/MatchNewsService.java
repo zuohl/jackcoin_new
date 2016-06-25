@@ -28,7 +28,7 @@ public class MatchNewsService {
     public Iterable<MatchNews> getMatchNews(Integer matchNews, int page, int size) {
         Sort sort = new Sort(Sort.Direction.DESC,"createDate");
         Pageable pageable = new PageRequest(page,size,sort);
-        Page<MatchNews> matchNewses = matchNewsDao.findByNewsType(matchNews,pageable);
+        Page<MatchNews> matchNewses = matchNewsDao.findByNewsTypeAndIsDelete(matchNews,Constants.DELETE_FLAG_NO,pageable);
         return matchNewses;
     }
 
@@ -41,7 +41,7 @@ public class MatchNewsService {
 
     public void updateMatchNews(MatchNews matchNews) {
         matchNews.setUpdateDate(new Date());
-        matchNewsDao.updateByMatchNews(matchNews);
+        matchNewsDao.save(matchNews);
     }
 
     public MatchNews getMatchNewsById(Integer newsId) {

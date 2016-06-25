@@ -1,18 +1,14 @@
 package com.jackcoin.controller;
 
+import com.jackcoin.annotation.SecurityDesc;
 import com.jackcoin.bean.Constants;
 import com.jackcoin.bean.MatchNews;
 import com.jackcoin.bean.WebResult;
 import com.jackcoin.service.MatchNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Created by zuohl on 2016/5/19.
@@ -39,6 +35,7 @@ public class MatchNewsController extends BaseController {
         return webResult;
     }
 
+    @SecurityDesc("增加新闻")
     @RequestMapping("/addMatchNews")
     public WebResult addMatchNews(MatchNews matchNews) {
         MatchNews news = matchNewsService.addMatchNews(matchNews);
@@ -53,6 +50,7 @@ public class MatchNewsController extends BaseController {
         return webResult;
     }
 
+    @SecurityDesc("删除新闻")
     @RequestMapping("/deleteMatchNews")
     public WebResult deleteMatchNews(MatchNews matchNews) {
         matchNews.setIsDelete(Constants.DELETE_FLAG_YES);
@@ -62,6 +60,8 @@ public class MatchNewsController extends BaseController {
         webResult.setCode(Constants.RESULT_SUCCESS);
         return webResult;
     }
+
+    @SecurityDesc("修改新闻")
     @RequestMapping("/updateMatchNews")
     public WebResult updateMatchNews(MatchNews matchNews) {
         matchNewsService.updateMatchNews(matchNews);

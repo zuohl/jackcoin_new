@@ -57,22 +57,12 @@
                             if (data.code == RESULT_SUCCESS) {
                                 setValue("token",data.data);
                                 alert("登录成功");
+                                window.location="managerList.html";
                             } else {
                                 alert(data.msg);
                             }
                         }
                     });
-/*                    $.post("/manager/login", {
-                        "userName": $("#userName").val(),
-                        "password": $("#password").val()
-                    }, function (data) {
-                        if (data.code == RESULT_SUCCESS) {
-                            setValue("token",data.data);
-                            alert("登录成功");
-                        } else {
-                            alert("登录失败");
-                        }
-                    });*/
                 }
                 //第二种提示写法，回调方法你自己提示就随意你了。
                 //if ($("#form1").valid(this,function(err){alert(err)})==false){
@@ -95,7 +85,7 @@
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="name" check-type="required" required-message="请填写你的大名。">
+                <input type="text" id="userName" class="form-control" id="name" check-type="required" required-message="请填写你的大名。">
             </div>
         </div>
 
@@ -104,17 +94,15 @@
         <div class="form-group">
             <label for="pw1" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="pw1" check-type="required" minlength="6">
+                <input type="password" id="password" class="form-control" id="pw1" check-type="required" minlength="6">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="submit1" class="btn btn-primary col-sm-4">注册</button>
+                <button type="submit" id="submit1" class="btn btn-primary col-sm-4">登录</button>
             </div>
         </div>
-
-
     </form>
 </div>
 </body>

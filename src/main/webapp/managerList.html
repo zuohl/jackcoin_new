@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>公告列表</title>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-nav.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>管理列表</h1>
+    </div>
+    <div id="managerList">
+
+        <div class="list-group">
+            <a href="addMatchNews.html" class="list-group-item">增加点评/公告</a>
+            <a href="matchNewsList.html?newsType=2" class="list-group-item">管理行情点评</a>
+            <a href="matchNewsList.html?newsType=1" class="list-group-item">管理赛事公告</a>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        if (!isNotEmpty(getValue("token"))) {
+            returnToLogin();
+        }
+    </script>
+</body>
+</html>

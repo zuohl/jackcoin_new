@@ -4,6 +4,7 @@
 var RESULT_SUCCESS = 0;
 var RESULT_BUSINESS_ERROR = 10;
 var RESULT_EXCEPTION = 100;
+var RESULT_LOGIN_EXCEPTION = 300;
 
 function isNotEmpty(_str) {
     var tmp_str = jQuery.trim(_str);
@@ -27,18 +28,6 @@ var getValue = function (key) {
     return isNotEmpty(value)?value:"";
 }
 
-function getUrlParam(string) {
-    var obj =  new Array();
-    if (string.indexOf("?") != -1) {
-        var string = string.substr(string.indexOf("?") + 1);
-        var strs = string.split("&");
-        for(var i = 0; i < strs.length; i ++) {
-            var tempArr = strs[i].split("=");
-            obj[i] = tempArr[1];
-        }
-    }
-    return obj;
-}
 function getParameter(param)
 {
     var query = window.location.search;
@@ -51,5 +40,9 @@ function getParameter(param)
     if (iEnd == -1)
         return query.substring(iStart);
     return query.substring(iStart, iEnd);
+}
+
+function returnToLogin() {
+    window.location="userLogin.html";
 }
 

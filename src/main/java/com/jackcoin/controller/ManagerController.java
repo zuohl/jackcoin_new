@@ -12,12 +12,11 @@ import javax.annotation.PostConstruct;
 /**
  * Created by zuohl on 2016/6/19.
  */
-@Controller
+@RestController
 @RequestMapping("/manager")
 public class ManagerController extends BaseController {
 
     @RequestMapping("/login")
-    @ResponseBody
     public WebResult login(@RequestParam(required = true) String userName,
                            @RequestParam(required = true) String password) {
         WebResult webResult = new WebResult();

@@ -10,7 +10,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Created by zuohl on 2016/5/21.
  */
 public interface MatchNewsDao extends PagingAndSortingRepository<MatchNews, Integer> {
-    Page<MatchNews> findByNewsType(Integer newsType, Pageable pageable);
-
-    void updateByMatchNews(MatchNews matchNews);
+    Page<MatchNews> findByNewsTypeAndIsDelete(Integer newsType, Integer isDelete,Pageable pageable);
 }

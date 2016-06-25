@@ -11,7 +11,7 @@ public class Constants {
     public static final int RESULT_SUCCESS = 0;
     public static final int RESULT_BUSINESS_ERROR = 10;
     public static final int RESULT_EXCEPTION = 100;
-
+    public static final int RESULT_LOGIN_EXCEPTION = 300;
     /**
      * 管理账号,密码
      */

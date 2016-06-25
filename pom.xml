@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jackcoin</groupId>
     <artifactId>jackcoin</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>jackcoin Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -17,6 +17,7 @@
         <junit-vesion>4.12</junit-vesion>
         <druid-vesion>1.0.19</druid-vesion>
         <sqlserver-version>4.0</sqlserver-version>
+        <jdk-version>1.8</jdk-version>
     </properties>
     <dependencies>
         <dependency>
@@ -60,7 +61,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <target>${jdk-version}</target>
+                    <source>${jdk-version}</source>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <verbose />
+                        <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
     <repositories>
