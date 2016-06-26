@@ -6,11 +6,4 @@
 		</dir>
 	</classpath>
 
-	<web>
-		<link target="/">
-			<dir name="C:/developer/github/jackcoin/src/main/webapp">
-			</dir>
-		</link>
-	</web>
-
 </application>
