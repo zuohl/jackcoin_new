@@ -5,6 +5,8 @@ var RESULT_SUCCESS = 0;
 var RESULT_BUSINESS_ERROR = 10;
 var RESULT_EXCEPTION = 100;
 var RESULT_LOGIN_EXCEPTION = 300;
+//全局分页数
+var PAGE_SIZE = 10;
 
 function isNotEmpty(_str) {
     var tmp_str = jQuery.trim(_str);

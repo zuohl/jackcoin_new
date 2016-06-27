@@ -78,8 +78,8 @@
                        tppabs="http://www.qbypsc.cn/ds/m/news/news.asp?id=1">新闻中心</a>
                     <ul class="am-menu-sub am-collapse  am-avg-sm-2 ">
 
-                        <li><a href="2.html" tppabs="http://www.qbypsc.cn/ds/m/news/?2.html" title="赛事公告">赛事公告</a></li>
-                        <li><a href="3.html" tppabs="http://www.qbypsc.cn/ds/m/news/?3.html" title="行情点评">行情点评</a></li>
+                        <li><a href="loadMatchNewsList.html?newsType=1" title="赛事公告">赛事公告</a></li>
+                        <li><a href="loadMatchNewsList.html?newsType=2" title="行情点评">行情点评</a></li>
                         <li><a href="4.html" tppabs="http://www.qbypsc.cn/ds/m/news/?4.html" title="交易中心介绍">交易中心介绍</a>
                         </li>
                         <li><a href="12.html" tppabs="http://www.qbypsc.cn/ds/m/news/?12.html" title="高手心得">高手心得</a>
@@ -89,9 +89,8 @@
                     </ul>
                 </li>
 
-
                 <li class="">
-                    <a href="enroll.html" tppabs="http://www.qbypsc.cn/ds/m/kh/">比赛报名</a>
+                    <a href="enroll.html">比赛报名</a>
                 </li>
 
             </ul>
@@ -102,9 +101,7 @@
 <div class="" style="margin-top:10px;">
 
     <div data-am-widget="list_news" class="am-list-news am-list-news-default">
-        <!--列表标题-->
         <div class="am-list-news-hd am-cf">
-            <!--带更多链接-->
             <a href="#">
                 <button type="button" class="am-btn am-btn-warning am-round am-btn-sm">赛事公告</button>
             </a>
@@ -143,7 +140,7 @@
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="">
     <ul class="am-navbar-nav am-cf am-avg-sm-4">
         <li>
-            <a href="enroll.html" tppabs="http://www.qbypsc.cn/ds/m/kh/">
+            <a href="enroll.html">
                 <span class="am-icon-user"></span>
                 <span class="am-navbar-label">比赛报名</span>
             </a>
@@ -154,37 +151,12 @@
                 <span class="am-navbar-label">注册交易账号</span>
             </a>
         </li>
-        <!--
-           <li>
-             <a href="#" data-am-modal="{target: '#modal-user'}">
-               <img src="../images/share.png" alt="QQ群交流" />
-               <span class="am-navbar-label">QQ群交流</span>
-             </a>
-           </li>
-       -->
+
     </ul>
 </div>
 
 <script src="../assets/js/jquery.min.js" tppabs="http://www.qbypsc.cn/ds/m/assets/js/jquery.min.js"></script>
 <script src="../assets/js/amazeui.min.js" tppabs="http://www.qbypsc.cn/ds/m/assets/js/amazeui.min.js"></script>
-
-
-<!--<div class="am-modal am-modal-no-btn" tabindex="-1" id="modal-user">
-    <div class="am-modal-dialog">
-        <div class="am-modal-hd">
-            QQ群交流：<a target="_blank"
-                     href="javascript:if(confirm('http://shang.qq.com/wpa/qunwpa?idkey=3008e16bee65b0de4673ec888d05a106f910e38c2bbbc1d6615e499e1279130e  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://shang.qq.com/wpa/qunwpa?idkey=3008e16bee65b0de4673ec888d05a106f910e38c2bbbc1d6615e499e1279130e'"
-                     tppabs="http://shang.qq.com/wpa/qunwpa?idkey=3008e16bee65b0de4673ec888d05a106f910e38c2bbbc1d6615e499e1279130e"><img
-                border="0" src="../../../../pub.idqqimg.com/wpa/images/group.png"
-                tppabs="http://pub.idqqimg.com/wpa/images/group.png" alt="邮币卡" title="邮币卡"></a>
-
-            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
-        </div>
-        <div class="am-modal-bd">
-
-        </div>
-    </div>
-</div>-->
 <script type="text/javascript">
     var newsType = getParameter("newsType");
     if (!isNotEmpty(newsType)) {
@@ -220,7 +192,7 @@
             dataType: "json",
             data: {
                 page: index,
-                size: 2,
+                size: PAGE_SIZE,
                 newsType:newsType
             },
             success: function (data) {
