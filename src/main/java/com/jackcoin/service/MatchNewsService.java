@@ -29,6 +29,7 @@ public class MatchNewsService {
         Sort sort = new Sort(Sort.Direction.DESC,"createDate");
         Pageable pageable = new PageRequest(page,size,sort);
         Page<MatchNews> matchNewses = matchNewsDao.findByNewsTypeAndIsDelete(matchNews,Constants.DELETE_FLAG_NO,pageable);
+
         return matchNewses;
     }
 

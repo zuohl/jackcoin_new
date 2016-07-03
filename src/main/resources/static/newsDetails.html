@@ -63,7 +63,7 @@
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="">
     <ul class="am-navbar-nav am-cf am-avg-sm-4">
         <li>
-            <a href="index.htm">
+            <a href="index.html">
                 <span class="am-icon-user"></span>
                 <span class="am-navbar-label">比赛报名</span>
             </a>
@@ -102,7 +102,7 @@
             type: "get",
             url: "/news/getMatchNewsById",
             cache: false,
-            async: true,
+            async: false,
             dataType: "json",
             data: {
                 newsId:newsId
